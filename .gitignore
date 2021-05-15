@@ -33,3 +33,5 @@ build/
 .vscode/
 
 src/main/resources/application.properties
+AxonServer/AxonServer-4.5.1/data
+AxonServer/AxonServer-4.5.1/plugins

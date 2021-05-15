@@ -1,0 +1,1 @@
+java -jar AxonServer/AxonServer-4.5.1/axonserver.jar
