@@ -1,5 +1,7 @@
 server.port=
 spring.datasource.url=
-spring.datasource.name=
 spring.datasource.password=
 spring.datasource.username=
+
+spring.jpa.hibernate.ddl-auto=
+spring.jpa.database=
