@@ -1,6 +1,6 @@
-package Shared.Infrastructure.Adapter.CommandBus;
+package com.example.spring_bank_project.Shared.Infrastructure.Adapter.CommandBus;
 
-import Shared.Presentation.CommandBus.CommandInterface;
+import com.example.spring_bank_project.Shared.Presentation.CommandBus.CommandInterface;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 
