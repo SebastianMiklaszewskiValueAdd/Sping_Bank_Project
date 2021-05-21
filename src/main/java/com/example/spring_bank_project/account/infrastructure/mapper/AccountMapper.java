@@ -8,5 +8,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface AccountMapper {
     @Mapping(target = "id", source = "standardAccount.accountId.accountId")
+    @Mapping(target = "owner", ignore = true)
     Account standardAccountToAccount(StandardAccount standardAccount);
 }
