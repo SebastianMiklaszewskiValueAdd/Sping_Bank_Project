@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,6 +22,6 @@ public class UserController {
     public ResponseEntity<User> store(@RequestBody @Valid AddNewUserRequest request) {
         this.facade.addNewUser(request);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.created(URI.create("/api/user/store")).build();
     }
 }

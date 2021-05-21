@@ -1,8 +1,6 @@
 package com.example.spring_bank_project.account.domain.valueObject;
 
-import com.example.spring_bank_project.account.domain.exception.UserIsNotAdultException;
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 
