@@ -5,3 +5,9 @@ spring.datasource.username=
 
 spring.jpa.hibernate.ddl-auto=
 spring.jpa.database=
+spring.jpa.show-sql=
+
+spring.mail.host=
+spring.mail.port=
+spring.mail.properties.mail.smtp.auth=
+spring.mail.properties.mail.smtp.starttls.enable=
