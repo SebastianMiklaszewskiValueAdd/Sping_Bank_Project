@@ -1,4 +1,4 @@
-package com.example.spring_bank_project.account.domain.valueObject;
+package com.example.spring_bank_project.shared.domain.valueObject;
 
 import lombok.Value;
 

@@ -2,6 +2,9 @@ package com.example.spring_bank_project.account.infrastructure.gateway.http.cont
 
 import com.example.spring_bank_project.account.application.useCase.addNewUser.AddNewUserContract;
 import com.example.spring_bank_project.account.domain.valueObject.*;
+import com.example.spring_bank_project.shared.domain.valueObject.Email;
+import com.example.spring_bank_project.shared.domain.valueObject.Pin;
+import com.example.spring_bank_project.shared.domain.valueObject.UserId;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +15,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class AddNewUserRequest implements AddNewUserContract {
     private UserId id;
-
     private FirstName firstName;
     private LastName lastName;
     private BirthDate birthDate;
