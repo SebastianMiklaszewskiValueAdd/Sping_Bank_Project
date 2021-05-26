@@ -1,13 +1,16 @@
 package com.example.spring_bank_project.account.domain.valueObject;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Value;
 
 import java.util.UUID;
 
-@Getter
+@Value
 public class AccountId {
-    private final UUID accountId;
+    UUID accountId;
+
+    public AccountId(String accountId) {
+        this.accountId = UUID.fromString(accountId);
+    }
 
     public AccountId(UUID accountId) {
         this.accountId = accountId;
