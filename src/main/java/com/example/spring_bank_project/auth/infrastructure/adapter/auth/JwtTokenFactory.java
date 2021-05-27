@@ -1,28 +1,24 @@
 package com.example.spring_bank_project.auth.infrastructure.adapter.auth;
 
 import com.example.spring_bank_project.auth.application.valueObject.AuthenticatedUserId;
+import com.example.spring_bank_project.auth.infrastructure.config.SecurityConstants;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.time.Instant;
 import java.util.Date;
 
 @Service
+@RequiredArgsConstructor
 public class JwtTokenFactory {
-    private final String secret;
-    private final String issuer;
-
-    public JwtTokenFactory(@Value("${SECRET}") String secret, @Value("${BASE_URL}") String issuer) {
-        this.secret = secret;
-        this.issuer = issuer;
-    }
+    private final SecurityConstants securityConstants;
 
     public String createToken(AuthenticatedUserId authenticatedUserId) {
-        var key = Keys.hmacShaKeyFor(this.secret.getBytes(StandardCharsets.UTF_8));
+        var key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(this.securityConstants.getSecret()));
 
         return this.buildJws(authenticatedUserId, key);
     }
@@ -30,9 +26,9 @@ public class JwtTokenFactory {
     private String buildJws(AuthenticatedUserId authenticatedUserId, Key key) {
         return Jwts.builder()
                    .signWith(key)
-                   .setIssuer(this.issuer)
+                   .setIssuer(this.securityConstants.getIssuer())
                    .setSubject(authenticatedUserId.getId().toString())
-                   .setExpiration(Date.from(Instant.now().plusSeconds(600)))
+                   .setExpiration(Date.from(Instant.now().plusSeconds(this.securityConstants.getJwtExpriationTime())))
                    .compact();
     }
 }

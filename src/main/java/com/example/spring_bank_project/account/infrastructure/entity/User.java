@@ -1,9 +1,10 @@
 package com.example.spring_bank_project.account.infrastructure.entity;
 
 import com.example.spring_bank_project.account.application.useCase.addNewUser.PinEncoder;
-import com.example.spring_bank_project.shared.domain.valueObject.UserId;
 import com.example.spring_bank_project.shared.domain.valueObject.EncodedPin;
 import com.example.spring_bank_project.shared.domain.valueObject.Pin;
+import com.example.spring_bank_project.shared.domain.valueObject.UserId;
+import com.example.spring_bank_project.shared.infrastructure.auth.UserSecurityData;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
@@ -51,5 +52,9 @@ public class User {
 
     public boolean isPinMatches(Pin pin, PinEncoder pinEncoder) {
         return pinEncoder.match(pin, new EncodedPin(this.pin));
+    }
+
+    public UserSecurityData getUserSecurityData() {
+        return new UserSecurityData(this.getUserId(), new EncodedPin(this.pin));
     }
 }
